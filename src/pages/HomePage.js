@@ -6,7 +6,7 @@ const HomePage = ({ ujol }) => {
       <Hero />
       <FeaturedProducts />
       {/* <Services /> */}
-      <Contact />
+      {/* <Contact /> */}
     </main>
   )
 }
