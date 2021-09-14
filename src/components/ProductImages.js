@@ -9,7 +9,7 @@ const ProductImages = ({ images = [{ url: '' }] }) => {
   return (
     <Wrapper>
       <img src={mainImage.url} alt='main' className='main' />
-      {/* <div className='gallery'>
+      <div className='gallery'>
         {images.map((item, index) => {
           return (
             <img
@@ -18,10 +18,10 @@ const ProductImages = ({ images = [{ url: '' }] }) => {
               alt={item.filename}
               key={index}
               onClick={() => setMainImage(images[index])}
-            /> */}
-      {/* )
-        })} */}
-      {/* </div> */}
+            />
+          )
+        })}
+      </div>
     </Wrapper>
   )
 }

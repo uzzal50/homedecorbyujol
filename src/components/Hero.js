@@ -3,11 +3,42 @@ import styled from 'styled-components'
 import { Link } from 'react-router-dom'
 import heroBcg from '../assets/hero-bcg.jpeg'
 import heroBcg2 from '../assets/hero-bcg-2.jpeg'
+import { motion } from 'framer-motion'
+
+const containerVariants = {
+  hover: {
+    scale: 1.1,
+    transition: {
+      yoyo: Infinity,
+    },
+  },
+
+  hidden: {
+    opacity: 0,
+    x: '100vw',
+  },
+  visible: {
+    opacity: 1,
+    x: 0,
+    trasition: {
+      type: 'spring',
+      delay: 0.5,
+    },
+  },
+}
 
 const Hero = () => {
   return (
     <Wrapper className='section-center'>
-      <article className='content'>
+      <motion.article
+        className='content'
+        // initial={{ x: -500 }}
+        // animate={{ x: 0 }}
+        // transition={{ delay: 0.3 }}
+        variants={containerVariants}
+        initial='hidden'
+        animate='visible'
+      >
         <h1>
           design your <br />
           comfort zone
@@ -16,10 +47,16 @@ const Hero = () => {
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Deleniti iure
           quasi odit tenetur unde officiis repudiandae quod deserunt quia eum?
         </p>
-        <Link to='/products' className='btn hero-btn'>
-          shop now
+        <Link to='/products'>
+          <motion.button
+            className='btn hero-btn'
+            whileHover='hover'
+            variants={containerVariants}
+          >
+            shop now
+          </motion.button>
         </Link>
-      </article>
+      </motion.article>
       <article className='img-container'>
         <img src={heroBcg} alt='nice table' className='main-img' />
         <img src={heroBcg2} alt='person working' className='accent-img' />
@@ -31,7 +68,7 @@ const Hero = () => {
 const Wrapper = styled.section`
   min-height: 60vh;
   display: grid;
-  overflow: hidden;
+
   place-items: center;
   .img-container {
     display: none;
@@ -54,7 +91,7 @@ const Wrapper = styled.section`
     p {
       font-size: 1.25rem;
     }
-    .hero-btn {
+    . {
       padding: 0.75rem 1.5rem;
       font-size: 1rem;
     }

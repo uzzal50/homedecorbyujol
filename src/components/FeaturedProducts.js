@@ -5,7 +5,26 @@ import styled from 'styled-components'
 import Error from './Error'
 import Loading from './Loading'
 import Product from './Product'
+import { motion } from 'framer-motion'
 
+const buttonVariant = {
+  hidden: {
+    x: '-100vw',
+  },
+  visible: {
+    x: 0,
+    transition: {
+      type: 'spring',
+      // stiffness: 120,
+    },
+  },
+  hover: {
+    scale: 1.1,
+    transition: {
+      yoyo: Infinity,
+    },
+  },
+}
 const FeaturedProducts = () => {
   const {
     products_loading: loading,
@@ -25,13 +44,26 @@ const FeaturedProducts = () => {
           <h2>featured products</h2>
           <div className='underline'></div>
         </div>
-        <div className='section-center featured'>
+        <motion.div
+          className='section-center featured'
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1, transition: { delay: 0.3 } }}
+        >
           {featured_Products.slice(0, 6).map((item) => {
             return <Product key={item.id} {...item} />
           })}
-        </div>
+        </motion.div>
         <Link to='products'>
-          <button className='btn'>All products</button>
+          <motion.button
+            className='btn'
+            whileHover={{ scale: 1.1 }}
+            variants={buttonVariant}
+            initial='hidden'
+            animate='visible'
+            whileHover='hover'
+          >
+            All products
+          </motion.button>
         </Link>
       </section>
     </Wrapper>

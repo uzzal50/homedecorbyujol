@@ -7,13 +7,24 @@ import { links } from '../utils/constants'
 import CartButtons from './CartButtons'
 import { useProductsContext } from '../context/products_context'
 import { useUserContext } from '../context/user_context'
+import { motion } from 'framer-motion'
 
 const Nav = () => {
   const { isSibebarOpen, openSideBar } = useProductsContext()
   const { myUser } = useUserContext()
   return (
     <NavContainer>
-      <div className='nav-center'>
+      <motion.div
+        className='nav-center'
+        initial={{ y: -110 }}
+        animate={{ y: 0 }}
+        transition={{
+          delay: 0.5,
+          duration: 1,
+          type: 'spring',
+          stiffness: '101',
+        }}
+      >
         <div className='nav-header'>
           <Link to='/'>
             <img src={logo} alt='comfy sloth' />
@@ -38,7 +49,7 @@ const Nav = () => {
           )}
         </ul>
         <CartButtons />
-      </div>
+      </motion.div>
     </NavContainer>
   )
 }
