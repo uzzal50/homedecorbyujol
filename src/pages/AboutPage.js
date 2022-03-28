@@ -11,7 +11,7 @@ const AboutPage = () => {
         <img src={aboutImg} alt='nice desk' />
         <article>
           <div className='title'>
-            <h2>Our Story</h2>
+            <h2>Our Stories</h2>
             <div className='underline'></div>
             <p>
               Lorem ipsum dolor sit amet consectetur adipisicing elit. Animi,
